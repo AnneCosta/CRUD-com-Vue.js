@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Populando tabela com API/Vue</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+</head>
+<body>
+    <main id="app">
+        <div class="text-center jumbotron jumbotron-fluid">
+            <h6 class="lead">Informações de usuário</h6>
+            <button type="button" class="btn btn-secondary" id="show-modal" @click="modal = true">Adicionar usuário</button>
+            <button type="button" class="btn btn-secondary">Sair</button>
+        </div>
+        <div class="container">
+            <table class="table table-hover table-bordered">
+                <thead class="table-secondary">
+                    <tr>
+                        <th class="text-center">ID</th>
+                        <th class="text-center">NOME</th>
+                        <th class="text-center">EMAIL</th>
+                        <th colspan="2" class="text-center">AÇÕES</th>
+                    </tr>
+                </thead>
+                <tbody class="text-center">
+                    <tr v-for="user in users" >
+                        <td>{{ user.id }}</td>
+                        <td>{{ user.name }}</td>
+                        <td>{{ user.email }}</td>
+                        <td><input type="button" v-on:click="editUser(user)" value="Editar" class="btn btn-outline-secondary"></td>
+                        <td><input type="button" v-on:click="deleteUser(user)" value="Excluir" class="btn btn-outline-secondary"></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="text-center">
+            <p>Cadastro de usuários</p>
+            <form>
+                <div class="form-group">
+                <input type="text" v-model="name" name="name" placeholder="Nome" class="col-4 offset-md-4 form-control">
+                </div>
+                <div class="form-group">
+                <input type="text" v-model="email" name="email" placeholder="Email" class="col-4 offset-md-4 form-control">
+                </div>
+                <div v-if='create == true'>
+                    <input type="button" v-on:click="createUser()" value="Enviar" class="btn btn-outline-info">
+                </div>
+                <div v-else>
+                    <input type="button" value="Atualizar" v-on:click="updateUser" class="btn btn-outline-info">
+                </div>
+            </form>
+        </div>
+    </main>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
+
+<script>
+
+</script>

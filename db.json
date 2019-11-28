@@ -1,0 +1,34 @@
+{
+  "users": [
+    {
+      "name": "Patricia Souza",
+      "email": "patricia@dev.co",
+      "id": 2
+    },
+    {
+      "name": "Maria",
+      "email": "maria@maria.com",
+      "id": 4
+    },
+    {
+      "name": "Marta Santos",
+      "email": "marta@marta.com",
+      "id": 5
+    },
+    {
+      "name": "Gabriel",
+      "email": "gabriel@gabriel.com",
+      "id": 6
+    }
+  ],
+  "comments": [
+    {
+      "id": 1,
+      "body": "some comment",
+      "postId": 1
+    }
+  ],
+  "profile": {
+    "name": "typicode"
+  }
+}
