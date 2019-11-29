@@ -10,7 +10,7 @@
     <main id="app">
         <div class="text-center jumbotron jumbotron-fluid">
             <h6 class="lead">Informações de usuário</h6>
-            <button type="button" class="btn btn-secondary" id="show-modal" @click="modal = true">Adicionar usuário</button>
+            <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#addUser">Adicionar usuário</button>
             <button type="button" class="btn btn-secondary">Sair</button>
         </div>
         <div class="container">
@@ -34,27 +34,49 @@
                 </tbody>
             </table>
         </div>
-        <div class="text-center">
-            <p>Cadastro de usuários</p>
-            <form>
-                <div class="form-group">
-                <input type="text" v-model="name" name="name" placeholder="Nome" class="col-4 offset-md-4 form-control">
+        
+
+        <!--  Modal  -->
+        <div class="modal fade" id="addUser" tabindex="-1" role="dialog" aria-labelledby="addUserTitle">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="addUserTitle">Cadastro de usuários</h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
                 </div>
-                <div class="form-group">
-                <input type="text" v-model="email" name="email" placeholder="Email" class="col-4 offset-md-4 form-control">
-                </div>
-                <div v-if='create == true'>
-                    <input type="button" v-on:click="createUser()" value="Enviar" class="btn btn-outline-info">
-                </div>
-                <div v-else>
-                    <input type="button" value="Atualizar" v-on:click="updateUser" class="btn btn-outline-info">
-                </div>
-            </form>
-        </div>
+                <form>
+                    <div class="modal-body">
+                        <div class="text-center">
+                            <div class="form-group">
+                                <input type="text" v-model="name" name="name" placeholder="Nome" class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <input type="text" v-model="email" name="email" placeholder="Email" class="form-control">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <div v-if='create == true'>
+                            <input type="button" v-on:click="createUser()" value="Enviar" class="btn btn-outline-info">
+                        </div>
+                        <div v-else>
+                            <input type="button" value="Atualizar" v-on:click="updateUser" class="btn btn-outline-info">
+                        </div>
+                    </div>
+                </form>
+              </div>
+            </div>
+          </div>
+
     </main>
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <script src="app.js"></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
 </body>
 </html>
 
