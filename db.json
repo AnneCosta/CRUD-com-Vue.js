@@ -1,34 +1,19 @@
 {
-  "users": [
+  "profile": [
     {
-      "name": "Patricia Souza",
-      "email": "patricia@dev.co",
+      "name": "gasbriel s t",
+      "email": "gasbriel@gasbriel",
+      "id": 1
+    },
+    {
+      "name": "hallo",
+      "email": "hallo@hallo",
       "id": 2
     },
     {
-      "name": "Maria",
-      "email": "maria@maria.com",
-      "id": 4
-    },
-    {
-      "name": "Marta Santos",
-      "email": "marta@marta.com",
-      "id": 5
-    },
-    {
-      "name": "Gabriel",
-      "email": "gabriel@gabriel.com",
-      "id": 6
-    },
-    {
-      "name": "a",
-      "email": "a@a",
-      "id": 7
-    },
-    {
-      "name": "john",
-      "email": "john@john.com",
-      "id": 8
+      "name": "vstu",
+      "email": "@@b",
+      "id": 3
     }
   ],
   "comments": [
@@ -38,7 +23,5 @@
       "postId": 1
     }
   ],
-  "profile": {
-    "name": "typicode"
-  }
+  "users": []
 }

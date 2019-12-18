@@ -9,7 +9,7 @@
 <body>
     <main id="app">
         <div class="text-center jumbotron jumbotron-fluid">
-            <h6 class="lead">Informações de usuário</h6>
+            <h6 class="lead">Informações de usuário</h6><br>
             <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#addUser">Adicionar usuário</button>
             <button type="button" class="btn btn-secondary">Sair</button>
         </div>
@@ -28,7 +28,7 @@
                         <td>{{ user.id }}</td>
                         <td>{{ user.name }}</td>
                         <td>{{ user.email }}</td>
-                        <td><input type="button" v-on:click="editUser(user)" value="Editar" class="btn btn-outline-secondary"></td>
+                        <td><input type="button" v-on:click="getUser(user)" data-toggle="modal" data-target="#editUser" value="Editar" class="btn btn-outline-secondary"></td>
                         <td><input type="button" v-on:click="deleteUser(user)" value="Excluir" class="btn btn-outline-secondary"></td>
                     </tr>
                 </tbody>
@@ -36,39 +36,83 @@
         </div>
         
 
-        <!--  Modal  -->
+        <!--  Modal - Cadastro  -->
         <div class="modal fade" id="addUser" tabindex="-1" role="dialog" aria-labelledby="addUserTitle">
             <div class="modal-dialog modal-dialog-centered" role="document">
-              <div class="modal-content">
-                <div class="modal-header">
-                  <h5 class="modal-title" id="addUserTitle">Cadastro de usuários</h5>
-                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                  </button>
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="addUserTitle">Cadastro de usuários</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <form id="app" @submit.prevent="checkForm">
+                        <div class="modal-body">
+                            <p v-if="errors.length">
+                                <ul>
+                                    <li v-for="error in errors">{{ error }}</li>
+                                </ul>
+                            </p>
+                            <div class="text-center">
+                            <div class="form-group">
+                                    <input type="text" v-model="name" name="name" placeholder="Nome" class="form-control" minlength="1">
+                                </div>
+                                <div class="form-group">
+                                    <input type="text" v-model="email" name="email" placeholder="Email" class="form-control" minlength="1">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <div v-if='errors == 0'>
+                                <input type="submit" v-on:click="createUser()" value="Enviar" data-dismiss="modal" class="btn btn-outline-secondary">
+                            </div>
+                            <div v-else>
+                                <input type="submit" v-on:click="createUser()" value="Enviar" class="btn btn-outline-secondary">
+                            </div>
+                        </div>
+                    </form>
                 </div>
-                <form>
-                    <div class="modal-body">
-                        <div class="text-center">
-                            <div class="form-group">
-                                <input type="text" v-model="name" name="name" placeholder="Nome" class="form-control">
-                            </div>
-                            <div class="form-group">
-                                <input type="text" v-model="email" name="email" placeholder="Email" class="form-control">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="modal-footer">
-                        <div v-if='create == true'>
-                            <input type="button" v-on:click="createUser()" value="Enviar" class="btn btn-outline-info">
-                        </div>
-                        <div v-else>
-                            <input type="button" value="Atualizar" v-on:click="updateUser" class="btn btn-outline-info">
-                        </div>
-                    </div>
-                </form>
-              </div>
             </div>
-          </div>
+        </div>
+
+        <!-- Modal - Editar -->
+        <div class="modal fade" id="editUser" tabindex="-1" role="dialog" aria-labelledby="editUserTitle">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="editUserTitle">Editar usuário</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <form id="app" @submit.prevent="checkForm">
+                        <div class="modal-body">
+                            <p v-if="errors.length">
+                                <ul>
+                                    <li v-for="error in errors">{{ error }}</li>
+                                </ul>
+                            </p>
+                            <div class="text-center">
+                                <div class="form-group">
+                                    <input type="text" v-model="name" name="name" placeholder="Nome" class="form-control" minlength="1">
+                                </div>
+                                <div class="form-group">
+                                    <input type="text" v-model="email" name="email" placeholder="Email" class="form-control" minlength="1">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <div v-if='errors == 0'>
+                                <input type="submit" v-on:click="editUser()" value="Enviar" data-dismiss="modal" class="btn btn-outline-secondary">
+                            </div>
+                            <div v-else>
+                                <input type="submit" v-on:click="editUser()" value="Enviar" class="btn btn-outline-secondary">
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
 
     </main>
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
