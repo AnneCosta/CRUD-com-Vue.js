@@ -14,11 +14,12 @@ import {firestorePlugin} from 'vuefire'
 import router from './router/index'
 import 'bootstrap/dist/css/bootstrap.css'
 import 'bootstrap-vue/dist/bootstrap-vue.css'
+import vuetify from './plugins/vuetify';
 
 axios.defaults.baseURL = 'http://localhost:8080'
 
 Vue.config.productionTip = false
-Vue.use(axios, BootstrapVue, AlertPlugin, BProgress)
+Vue.use(axios, BootstrapVue, AlertPlugin, BProgress, vuetify)
 Vue.use(ModalPlugin, BForm, VueRouter, firestorePlugin, firebase)
 Vue.prototype.$axios = axios
 Vue.component('b-button',BButton)
@@ -46,5 +47,6 @@ firebase.initializeApp(config);
 
 new Vue({
   render: h => h(App),
+  vuetify,
   router
 }).$mount('#app')

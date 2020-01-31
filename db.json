@@ -23,5 +23,11 @@
       "postId": 1
     }
   ],
-  "users": []
+  "users": [
+    {
+      "name": "b",
+      "email": "b@c",
+      "id": 1
+    }
+  ]
 }
